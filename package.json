@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marlon-santana/api-ReactMoney.git"
@@ -18,10 +16,6 @@
   },
   "homepage": "https://github.com/marlon-santana/api-ReactMoney#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.20.0",
-    "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.3"
+    "express": "^4.18.1"
   }
 }
