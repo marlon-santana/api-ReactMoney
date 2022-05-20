@@ -25,6 +25,5 @@ app.use(express.json());
 
 app.route('/').post((req, res) => {
     const {nome, idade } = req.body
-
-    res.send(`o nome é ${nome} e a idade é ${idade}`)
-});
+    res.send(`o nome é ${nome} e a idade é ${idade}`) // api recebe nome e idade no body e repassa  de novo como resposta a frase
+});                                                     //com as variaves.
