@@ -22,13 +22,15 @@ app.use(express.json());
     /********Requisições com  parametros************/
 //    app.route('/').get((req, res) => res.send(req.query.name));
 //    app.route('/').post((req, res) => req.send(req.body));
-//    app.route('/:parametro').get((req, res) => res.send(req.params.parametro))
+    app.route('/:parametro').get((req, res) => res.send(req.params.parametro))
 
 app.use(express.json());
 
 app.route('/').post((req, res) => {
-    const {nome, idade } = req.body
-    res.send(`o nome é ${nome} e a idade é ${idade}`) // api recebe nome e idade no body e repassa  de novo como resposta a frase
+    const {author } = req.body
+    res.send(`o author é ${author}`) // api recebe nome e idade no body e repassa  de novo como resposta a frase
 });                                                     //com as variaves.
 
 app.listen(3000);
+
+//mongodb://marlon:marlonsantana4@datalake0-cpwpv.a.query.mongodb.net/?ssl=true&authSource=admin
