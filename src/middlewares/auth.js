@@ -1,29 +1,27 @@
-const jwt = require('jsonwebtoken');
-const authConfig = require('../config/auth.json');
-
+const jwt = require("jsonwebtoken");
+const authConfig = require("../config/auth.json");
 
 module.exports = (req, res, next) => {
-    const authHeader = req.headers.authorization;
+  const authHeader = req.headers.authorization;
 
-    if(!authHeader)
-    return res.status(401).send({ error: 'No token provided'});
+  if (!authHeader)
+    return res.status(401).send({ errror: "Token nao foi informado!" });
 
-    const parts = authHeader.split('');
+  //token começa com Bearer
+  const parts = authHeader.split(" ");
 
-    if(!parts.length === 2)
-    return res.status(401).send({ error: 'Token error'});
+  if (!parts.lenght === 2)
+    return res.status(401).send({ error: "Token Errado !" });
 
-    const [ scheme, token ] = parts;
+  const [scheme, token] = parts;
 
-    if(!/^Bearer$/i.test(scheme))
-    return res.status(401).send({ error: 'Token malformated '});
+  if (!/^Bearer$/i.test(scheme))
+    return res.status(401).send({ error: "Token Mal Formatado !" });
 
-    jwt.verify(token, authConfig.secret, (err, decoded) => {
-        if(err) return res.status(401).send({ errr: 'Token invalid' });
-        req.userId = decoded.id;
+  jwt.verify(token, authConfig.secret, (err, decoded) => {
+    if (err) return res.status(401).send({ error: "token invalido" });
 
-        return next();
-    })
-
-    
+    req.userId = decoded.id;
+    return next();
+  });
 };
