@@ -1,17 +1,28 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const authConfig = require('../config/auth');
+const authConfig = require('../../config/auth');
 
-const User = require('../../models/User');
+const User = require('../models/user');
 
 const router = express.Router();
 
  function generateToken(params = {}) {
     return jwt.sign(params, authConfig.secret, {
         expiresIn: 86400 // 24horas.
-    })
+    });
  }
+
+ router.post('forgot_password', async (req, res) => {
+     const { email } = req.body;
+
+     try {
+         //verificar se o email está cadastrado no nosso db.
+
+     }catch (err) {
+        res.status(400).send({ erro: 'Erro on forgot password, try again'});
+     }
+ })
 
 
 router.post('/register', async (req, res) => {
