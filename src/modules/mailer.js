@@ -14,10 +14,11 @@ const  transport = nodemailer.createTransport({
     }
   });
 
-  transport.use('compile', hbs({
-      viewEngine: 'handlebars',
-      viewPath: path.resolve('./src/resources/mail/'),
-      extName: '.html',
+  transport.use("compile", hbs({
+      viewEngine: "handlebars",
+      viewPath: path.resolve("./src/resources/mail/"),
+      extName: ".html",
+      defaultLayout: "forgot_password.html"
   }));
 
   module.exports = transport;
