@@ -25,7 +25,7 @@ const router = express.Router();
   
       if (!user) return res.status(400).send({ erro: "Usuario nao encontrado" });
   
-      const token = crypto.randomBytes(20).toString("hex");
+      const token = crypto.randomBytes(20).toString("hex");//hex
   
       const now = new Date();
   
