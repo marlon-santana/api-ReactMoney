@@ -12,7 +12,7 @@ router.use(authMiddleware);
 
 router.get('/', async (req, res) => {
    try {
-       const projects = await Project.find();
+       const projects = await Project.find().populate('user');
 
        return res.send({ projects });
 
@@ -22,12 +22,19 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:projectId', async (req, res) => {
-    res.send({user: req.userId});
+    try {
+        const projects = await Project.findById(req.params.projectId).populate('user');
+ 
+        return res.send({ projects });
+ 
+    }catch(err) {
+        return res.status(400).send({ erro: 'Erro loading project'});
+    }
 });
 
 router.post('/', async (req, res) => {
     try {
-        const project = await Project.create(req.body);
+        const project = await Project.create({...req.body, user: req.userId});
 
         return res.send({ project });
 
@@ -39,7 +46,14 @@ router.put('/:projectId', async (req, res) => {
     res.send({ user: req.userId});
 });
 router.delete('/:projectId', async (req, res) => {
-    res.send({ user: req.userId});
+    try {
+       await Project.findByIdAndRemove(req.params.projectId);
+ 
+        return res.send();
+ 
+    }catch(err) {
+        return res.status(400).send({ erro: 'Erro deleting project'});
+    }
 });
 
 
