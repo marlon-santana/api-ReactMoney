@@ -10,8 +10,11 @@
       {
 
         "src": "/(.*)",
-       
         "dest": "/"
+      },
+      {
+        "src": "/projects",
+        "dest": "/api-react-money.vercel.app/projects"
       }
     ]
   }
