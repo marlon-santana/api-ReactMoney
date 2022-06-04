@@ -14,7 +14,7 @@
         "dest": "/app/controllers/projecController.js"
       },
       {
-         "src": "/", "status": 200, "dest": "/projects.js" 
+         "src": "/", "status": 200, "dest": "/app/controllers/projecController.js" 
       
       }
     ],
