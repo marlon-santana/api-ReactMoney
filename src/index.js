@@ -7,16 +7,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.get("/", (req, res) => {
+app.get("/",  (req, res) => {
     res.send("Express on Vercel");
+   
   });
 
-  
-
-  
 
 
-require('./src/app/controllers/index')(app);
+require('./app/controllers/index')(app);
 
 
 app.listen(3000);
