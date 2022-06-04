@@ -1,9 +1,9 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-//const jwt = require('jsonwebtoken');
-//const authConfig = require('../../config/auth');
-const crypto = require('crypto');
-const mailer = require('../../modules/mailer.js');
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
+// const authConfig = require('../../config/auth');
+// const crypto = require('crypto');
+// const mailer = require('../../modules/mailer.js');
 
 
 const User = require('../models/user');
@@ -125,8 +125,8 @@ router.post('/authenticate', async (req, res) => {
     if(!user) 
     return res.status(400).send({ error: 'User not found '});
 
-    if(!await bcrypt.compare(password, user.password))
-    return res.status(400).send({ error: 'Invalid password'});
+    // if(!await bcrypt.compare(password, user.password))
+    // return res.status(400).send({ error: 'Invalid password'});
 
     user.password = undefined;
 

@@ -6,15 +6,20 @@
         "use": "@vercel/node"
       }
     ],
+    "name":"api-ReactMoney",
     "routes": [
       {
 
-        "src": "/(.*)",
-        "dest": "/"
+        "src": "/projects",
+        "dest": "/app/controllers/projecController.js"
       },
       {
-        "src": "/projects",
-        "dest": "/api-react-money.vercel.app/projects"
+         "src": "/", "status": 200, "dest": "/projects.js" 
+      
       }
+    ],
+    "redirects": [
+      { "source": "/projects", "destination": "/projects.js" }
     ]
+     
   }

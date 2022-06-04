@@ -1,5 +1,5 @@
 const express = require('express');
-const authMiddleware = require('../middlewares/auth.js');
+// const authMiddleware = require('../middlewares/auth.js');
 const Project = require('../models/project');
 const Task = require('../models/task');
 
@@ -7,7 +7,7 @@ const Task = require('../models/task');
 
 const router = express.Router();
 
-router.use(authMiddleware);
+// router.use(authMiddleware);
 
 
 router.get('/', async (req, res) => {
